@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="당구연습">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#14181d">
+<title>당구 연습</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <div id="tabs">
+      <button id="tabPractice" class="tab on">연습</button>
+      <button id="tabGame" class="tab">대국</button>
+    </div>
+    <select id="mode" aria-label="종목">
+      <option value="three">3구</option>
+      <option value="four">4구</option>
+    </select>
+    <select id="tableSize" aria-label="테이블">
+      <option value="medium">중대</option>
+      <option value="large">대대</option>
+    </select>
+    <button id="btnRotate" class="icon" title="가로/세로 전환">⟳</button>
+  </header>
+
+  <div id="scoreboard" hidden>
+    <div class="side me"><span class="nm">나</span><b id="scoreMe">0</b></div>
+    <div class="mid"><span id="turnText">내 차례</span><small id="inningText">1이닝</small></div>
+    <div class="side bot"><b id="scoreBot">0</b><span class="nm" id="botName">로봇</span></div>
+  </div>
+
+  <div id="statsLine"></div>
+
+  <div id="tableWrap"><canvas id="table"></canvas></div>
+
+  <div id="msg"></div>
+
+  <div id="controls">
+
+    <div class="row" id="practicePanel">
+      <select id="drill" aria-label="연습 배치"></select>
+      <button id="btnReset">배치 리셋</button>
+    </div>
+
+    <div id="gamePanel" hidden>
+      <div class="row">
+        <select id="aiLevel" aria-label="상대 실력">
+          <option value="easy">상대: 초급</option>
+          <option value="mid" selected>상대: 중급</option>
+          <option value="hard">상대: 고급</option>
+        </select>
+        <select id="target" aria-label="목표 점수">
+          <option value="5">5점</option>
+          <option value="10" selected>10점</option>
+          <option value="15">15점</option>
+          <option value="20">20점</option>
+        </select>
+        <button id="btnNewGame">새 게임</button>
+      </div>
+      <p id="aiDesc" class="hint"></p>
+    </div>
+
+    <div class="row tipRow">
+      <div class="tipBox">
+        <canvas id="tip" aria-label="당점"></canvas>
+        <div class="sub">당점 <b id="tipVal">중앙 / 중앙</b></div>
+        <button id="btnCenterTip" class="small">당점 중앙</button>
+      </div>
+
+      <div class="sliders">
+        <label>세기 <b id="powerVal">50%</b></label>
+        <input id="power" type="range" min="5" max="100" value="50">
+
+        <label>조준 <b id="angleVal">0.0°</b></label>
+        <div class="angleBtns">
+          <button id="angleMinus2">◀◀</button>
+          <button id="angleMinus">◀</button>
+          <button id="anglePlus">▶</button>
+          <button id="anglePlus2">▶▶</button>
+        </div>
+
+        <label>재생 속도</label>
+        <select id="speed">
+          <option value="0.5">0.5x</option>
+          <option value="1" selected>1x</option>
+          <option value="2">2x</option>
+          <option value="4">4x</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row btns">
+      <button id="btnShot" class="primary">샷</button>
+      <button id="btnSameShot">같은 샷 반복</button>
+      <button id="btnReplay">리플레이</button>
+    </div>
+
+    <div class="row btns">
+      <button id="btnMove" class="tgl">공 옮기기</button>
+      <button id="btnTrace" class="tgl">궤적 표시</button>
+      <button id="btnPreview" class="tgl">예측선</button>
+    </div>
+
+    <div id="hints">
+      <p id="tipText"></p>
+      <p id="rule" class="rule"></p>
+    </div>
+  </div>
+</div>
+
+<script src="js/physics.js"></script>
+<script src="js/render.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pwa.js"></script>
+</body>
+</html>
