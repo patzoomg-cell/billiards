@@ -1,19 +1,12 @@
 /* 오프라인 실행용 서비스 워커 (캐시 우선) */
-const CACHE = 'billiards-v2';
+const CACHE = 'billiards-v3';
 const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './css/style.css',
-  './js/physics.js',
-  './js/render.js',
-  './js/game.js',
-  './js/ai.js',
-  './js/app.js',
-  './js/pwa.js',
-  './icons/apple-touch-icon.png',
-  './icons/icon-192.png',
-  './icons/icon-512.png'
+  './apple-touch-icon.png',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 self.addEventListener('install', (e) => {
